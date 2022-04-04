@@ -14,27 +14,31 @@ function cb(error,response,html){
     if(error){
         console.log(error);
     }else{
+      
         const dom = new JSDOM(html);
         const document = dom.window.document;
-        let allScorecardTags = document.querySelectorAll('a[data-hover="Scorecard"]');
+        let allScorecardTags = document.querySelectorAll('[class="ds-flex ds-mx-4 ds-pt-2 ds-pb-3 ds-space-x-4 ds-border-t ds-border-line-default-translucent"] [class="ds-inline-flex ds-items-center ds-leading-none"]:nth-child(3) a');
         for(let i=0;i<allScorecardTags.length;i++){
+            // console.log(allScorecardTags[i].href)
             let link = allScorecardTags[i].href;
             let completeLink = "https://www.espncricinfo.com"+link;
             // console.log(completeLink);
             request(completeLink,cb2);
             counter++;
         }
-        // console.log("Line 24: ",leaderboard);
+        
     }
 }
 
 function cb2(error,response,html){
+    
     if(error){
         console.log(error);
     }else{
+       
         const dom = new JSDOM(html);
         const document = dom.window.document;
-        let batsmenRow = document.querySelectorAll(".table.batsman tbody tr");
+        let batsmenRow = document.querySelectorAll('tbody [class="ds-border-b ds-border-line ds-text-tight-s"]');
         for(let i=0;i<batsmenRow.length;i++){
             let cells = batsmenRow[i].querySelectorAll("td");
             if(cells.length == 8){
@@ -52,8 +56,6 @@ function cb2(error,response,html){
             console.log(leaderboard);
             let data = JSON.stringify(leaderboard);
             fs.writeFileSync('BatsmenStats.json',data);
-
-
         }
     }
 }
