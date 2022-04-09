@@ -9,7 +9,7 @@ let ob ={
     "Age": 22,
     "phone" : 8340742437
 }
-// find length of array
+// find length of oject
 let siz= Object.keys(ob).length;
 console.log(siz);
 // print keys of the string
