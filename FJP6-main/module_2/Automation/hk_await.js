@@ -3,7 +3,7 @@ const mail = "devilmorngstar22@gmail.com";
 const pass = "Ashutosh12@";
 const code = require('./code');
 
-let browserPromise = puppeteer.launch({ headless: false, defaultViewport: null,args: ['--start-fullscreen'] });
+// let browserPromise = puppeteer.launch({ headless: false, defaultViewport: null,args: ['--start-fullscreen'] });
 
 // async function use for if the make any functon ansynchronus
 (async function(){
